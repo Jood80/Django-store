@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from mptt.models import MPTTModel, TreeForeignKey
 
+from mptt.models import MPTTModel, TreeForeignKey
 from model_utils.models import TimeStampedModel
 
 
@@ -101,7 +101,7 @@ class Product(TimeStampedModel):
         default=True)
 
     class Meta:
-        ordering = ('-created')
+        ordering = ('-created',)
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
 
