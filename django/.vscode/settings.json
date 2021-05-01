@@ -1,0 +1,42 @@
+{
+  "editor.formatOnSave": true,
+  "python.pythonPath": "${workspaceRoot}/.venv/bin/python",
+  "python.sortImports.args": [
+    "--profile=black",
+  ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": [
+    "--line-length=119"
+  ],
+  "[python]": {
+    "gitlens.codeLens.symbolScopes": [
+      "!Module"
+    ],
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  //Django Extension
+  "files.associations": {
+    "**/*.html":"html",
+    "**/templates/**/*.html":"django-html",
+    "**/templates/**/*":"django-txt",
+    "**/requirements{/**,*}.{txt,in}":"pip-requirements",
+  }, 
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/*.pyc": true,
+    "**/__pycache__/": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/.venv": true,
+    "**/.venv3": true,
+    "**/tmp": true
+  }
+}
