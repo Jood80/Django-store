@@ -62,7 +62,7 @@ class ProductSpec(models.Model):
         return self.name
 
 
-class Product(models.Model, TimeStampedModel):
+class Product(TimeStampedModel):
     category = models.ForeignKey(Category, on_delete=models.RESTRICT)
     product_type = models.ForeignKey(ProductType, on_delete=models.RESTRICT)
     title = models.CharField(
@@ -130,13 +130,13 @@ class ProductSpecValue(models.Model):
         return self.value
 
 
-class ProductImage(models.Model, TimeStampedModel):
+class ProductImage(TimeStampedModel):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='product_image')
     image = models.ImageField(
         verbose_name=_('image'),
         help_text=_('Upload a product image'),
-        upload_ro='images/',
+        upload_to='images/',
         default='images/default.png',
     )
     alt_text = models.CharField(
