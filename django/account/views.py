@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.views.decorators.http import require_POST
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 
 
 def get_csrf(request):
@@ -28,3 +31,13 @@ def login_view(request):
 
     login(request, user)
     return JsonResponse({'info': 'logged in successfully'})
+
+
+class WhoAmIView(APIView):
+    authentication_classes = [SessionAuthentication]
+    Permission_classes = [IsAuthenticated]
+
+    @staticmethod
+    def get(request, format=None):
+        print(request.user.username)
+        return JsonResponse({'username', request.user.username})
